@@ -12,7 +12,7 @@
 
     <style>
     .hero2 {
-  height: 60vh;
+  height: 40vh;
   background: url(img/heroen.png) center/cover no-repeat;
   display: grid;
   justify-content: center;
@@ -22,12 +22,24 @@
               0 6px 20px rgba(0,0,0,0.19);
 
     }
+    .hero2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-overlay); /* controla la oscuridad */
+  z-index: 1;
+  mix-blend-mode: multiply;
+}
+.textohero{
+  z-index: 3;
+  margin-left: -150%;
+}
     .entradaa{
       background: url(img/f1.png)center/cover no-repeat;
       height: 40vh;
     }
      .entradab{
-      background: url(img/f2.png)center/cover no-repeat;
+      background: url(img/f2d.png)center/cover no-repeat;
       height: 40vh;
     }
      .entradac{
@@ -43,7 +55,9 @@
       gap: 20px; 
       margin: 50px 10%;
     }
-
+    #entradasection{
+      height: 40vh;
+    }
     .tarjeta img {
       width: 100%; 
     }
@@ -60,10 +74,12 @@
       transform: translateY(20px);
       transition: opacity 1s ease-out, transform 1s ease-out;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       padding: 3rem 0;
-      margin: 50px;
+      margin-left: 10%;
+      margin-right: 10%;
       gap: 1.5rem;
+      justify-content: center;
     }
 
     .entradainfo.show {
@@ -72,16 +88,20 @@
     }
 
     .entrada1 {
-      background-color: #020009;
-      padding: 10px;
+      background-color: var(--color-tarjetas);
+      padding: 0px;
       margin: 10px;
       text-align: center;
     }
 
     .entrada1 img {
-      display: block;
-      margin: 0 auto;
-    }
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
 
     
 
@@ -144,7 +164,7 @@
 
  <section class="hero2">
     <div id="entradah" class="img5"></div>
-    <div class="overlay"></div>
+    <div id="entradasection" class="overlay"></div>
     <div class="textohero">
         <h1 id="titulo1">Entradas</h1>
         </div>
@@ -155,7 +175,7 @@
   <section class="entradainfo">
     <div class="entrada1">
       <div class="entradaa">
-      <h3>General</h3>
+      <h1>General</h1>
       </div>
       <h3>viví el festival en toda su esencia.</h3>
       <li> Acceso completo a las 4 zonas cardinales.</li>
@@ -165,7 +185,7 @@
     </div>
     <div class="entrada1">
       <div class="entradab">
-      <h3>Umbral</h3>
+      <h1>Umbral</h1>
       </div>
       <h3>viví el festival con toda la experiencia.</h3>
       <li> Acceso completo a las 4 zonas cardinales.</li>
@@ -175,7 +195,7 @@
     </div>
     <div class="entrada1">
       <div class="entradac">
-      <h3>Comunidad</h3>
+      <h1>Comunidad</h1>
       </div>
       <h3>Viví el festival  dejando tu huella</h3>
       <li> Acceso completo a las 4 zonas cardinales.</li>
@@ -235,3 +255,17 @@
   </script>
 </body>
 </html>
+<script>
+  const toggle = document.getElementById('modo-toggle');
+  const body = document.body;
+
+  // Recordar preferencia
+  if (localStorage.getItem('modo') === 'noche') {
+    body.classList.add('dark-mode');
+  }
+
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
+  });
+</script>
