@@ -4,7 +4,7 @@ const second = 1000,
       day = hour * 24;
 
 // Fecha del evento
-let countDown = new Date("Sep 30, 2025 19:52:00").getTime();
+let countDown = new Date("Oct 25, 2025 19:52:00").getTime();
 
 let x = setInterval(function() {
   let now = new Date().getTime(),
