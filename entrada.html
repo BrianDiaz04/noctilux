@@ -9,48 +9,182 @@
     <meta name="viewport" content="width=device-width,initial-scale1"/>
     <link rel="stylesheet" href="./style.css">
     <script src="contador.js"></script>
+
+    <style>
+    .hero2 {
+  height: 60vh;
+  background: url(img/heroen.png) center/cover no-repeat;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2),
+              0 6px 20px rgba(0,0,0,0.19);
+
+    }
+    .entradaa{
+      background: url(img/f1.png)center/cover no-repeat;
+      height: 40vh;
+    }
+     .entradab{
+      background: url(img/f2.png)center/cover no-repeat;
+      height: 40vh;
+    }
+     .entradac{
+      background: url(img/f3.png)center/cover no-repeat;
+      height: 40vh;
+    }
+
+    .tarjeta {
+      background-color: blueviolet;
+      display: grid;
+      grid-template-columns: 2fr 2fr;
+      align-items: center; 
+      gap: 20px; 
+      margin: 50px 10%;
+    }
+
+    .tarjeta img {
+      width: 100%; 
+    }
+
+    .texto {
+      display: flex;
+      flex-direction: column; 
+      gap: 10px;
+    }
+
+    /* Fade-in inicial para entradainfo */
+    .entradainfo {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 3rem 0;
+      margin: 50px;
+      gap: 1.5rem;
+    }
+
+    .entradainfo.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .entrada1 {
+      background-color: #020009;
+      padding: 10px;
+      margin: 10px;
+      text-align: center;
+    }
+
+    .entrada1 img {
+      display: block;
+      margin: 0 auto;
+    }
+
+    
+
+    .entrada1 a {
+      margin: 10;
+    }
+
+    .entrada1 p {
+      margin: 10px;
+    }
+
+    /* Fade-in para imagen99 */
+    .imagen-fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+      text-align: center;
+      margin: 50px 0;
+    }
+
+    .imagen-fade.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .imagen-fade img {
+      max-width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .tarjeta {
+        flex-direction: column; /* en móvil, la imagen va arriba y el texto debajo */
+        text-align: center;
+      }
+    }
+    </style>
  </head>
+
 <body>
      <!-- HEADER -->
   <header class="header">
     <div class="container">
-      <div class="logo">UMBRAL</div>
+      <div class="logo">
+        <img src="img/Group 217.png" alt="lerolero">
+       </div>
       <nav class="nav">
         <button class="burger">☰</button>
+        <button id="modo-toggle" class="burger2">🌓</button>
         <ul>
-          <li><a href="#">Inicio</a></li>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="entrada.html">Entradas</a></li>
+          <li><a href="entrada.html">Sobre nosotros</a></li>
         </ul>
       </nav>
     </div>
   </header>
-  <!-- Seccion azul bloque 2 imagenes-->
-  <section class="about">
-    <div class="container about-grid">
-      <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque in ex faucibus mollis. Cras sit amet facilisis justo, eu dignissim eros. Cras pellentesque augue sit amet dui rhoncus, et consectetur quam lobortis. Duis ac enim luctus, iaculis leo sed, sagittis eros. 
-        </p>
+
+ <section class="hero2">
+    <div id="entradah" class="img5"></div>
+    <div class="overlay"></div>
+    <div class="textohero">
+        <h1 id="titulo1">Entradas</h1>
+        </div>
+  </section>
+  <!-- TARJETA INFO -->
+
+  <!-- ENTRADAS -->
+  <section class="entradainfo">
+    <div class="entrada1">
+      <div class="entradaa">
+      <h3>General</h3>
       </div>
-      <div class="about-item">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus pellentesque in ex faucibus mollis. Cras sit amet facilisis justo, eu dignissim eros. Cras pellentesque augue sit amet dui rhoncus, et consectetur quam lobortis. Duis ac enim luctus, iaculis leo sed, sagittis eros. 
-        </p>
-        <img src="img/img3.png" alt="Imagen festival 2">
+      <h3>viví el festival en toda su esencia.</h3>
+      <li> Acceso completo a las 4 zonas cardinales.</li>
+      <li>Shows, actividades y recorridos sensoriales.</li>
+      <li>Zona gastronómica y barra general.</li>
+      <a class="botoncito" href="entrada1.html">Consegui tu entrada</a>
+    </div>
+    <div class="entrada1">
+      <div class="entradab">
+      <h3>Umbral</h3>
       </div>
+      <h3>viví el festival con toda la experiencia.</h3>
+      <li> Acceso completo a las 4 zonas cardinales.</li>
+      <li>Shows, actividades y recorridos sensoriales.</li>
+      <li>Zona gastronómica y barra general.</li>
+      <a class="botoncito" href="#">Consegui tu entrada</a>
+    </div>
+    <div class="entrada1">
+      <div class="entradac">
+      <h3>Comunidad</h3>
+      </div>
+      <h3>Viví el festival  dejando tu huella</h3>
+      <li> Acceso completo a las 4 zonas cardinales.</li>
+      <li>Shows, actividades y recorridos sensoriales.</li>
+      <li>Zona gastronómica y barra general.</li>
+      <a class="botoncito" href="#">Consegui tu entrada</a>
     </div>
   </section>
-  <!-- LOGO CENTRAL -->
-  <section class="logo-section">
-    <div class="container">
-      <img src="img/logo2.png" alt="Logo Umbral Azul">
-    </div>
-  </section>
- <iframe style="border-radius:12px" 
-  src="https://open.spotify.com/embed/playlist/37i9dQZF1FbHycz9p14Od2?utm_source=generator" 
-  width="100%" 
-  height="380" 
-  frameborder="0" 
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
- </iframe>
+
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -72,5 +206,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Observer para la sección de entradas
+    const entradas = document.querySelector('.entradainfo');
+    const observerEntradas = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observerEntradas.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    observerEntradas.observe(entradas);
+
+    // Observer para la nueva imagen
+    const imagenSeccion = document.querySelector('.imagen-fade');
+    const observerImagen = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+          observerImagen.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    observerImagen.observe(imagenSeccion);
+  </script>
 </body>
-  </html>
+</html>

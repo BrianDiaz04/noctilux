@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Umbrales - Entradas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="modo-noche"> <!-- cambiar a modo-dia para ver el otro tema -->
+
+ <header class="header">
+    <div class="container">
+      <div class="logo">
+        <img src="img/Group 217.png" alt="lerolero">
+       </div>
+      <nav class="nav">
+        <button class="burger">☰</button>
+        <button id="modo-toggle" class="burger2">🌓</button>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="entrada.html">Entradas</a></li>
+          <li><a href="festival.html">Sobre nosotros</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <section class="hero2">
+    <div id="entradah" class="img5"></div>
+    <div class="textohero">
+        <h1 id="titulo1">General</h1>
+        </div>
+  </section>
+
+  <section class="contenido">
+    <h2>VIVÍ EL FESTIVAL EN TODA SU ESENCIA.</h2>
+    <p>
+      La Entrada General es la puerta de entrada al universo de Umbrales: el punto donde comienza la fusión entre lo diurno y lo nocturno. 
+Es ideal para quienes buscan ser parte del encuentro, moverse libremente entre las zonas, sentir la energía del intercambio y dejarse llevar por la mezcla de sonidos, luces y aromas que envuelven el festival.
+Vas a poder recorrer las cuatro zonas cardinales, cada una con su identidad, su música y sus colores. Participar de los rituales espontáneos, ver cómo el amanecer tiñe los cuerpos de espuma luminosa y compartir comidas comunitarias que evocan la unión. <b>Umbrales</b>...
+    </p>
+    <li>Acceso completo a las 4 zonas cardinales.</li>
+    <li>Shows, actividades y recorridos sensoriales.</li>
+    <li>Zona gastronómica y barra general.</li>
+    <li>Espacios comunes para el intercambio entre comunidades.</li>
+    <button class="boton">Conseguí tu entrada</button>
+  </section>
+
+  <!-- PNG decorativo -->
+  <div class="decoracion"></div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="social">
+        <img src="img/Group 217.png" alt="lerolero">
+      </div>
+      <div class="more-info">
+        <p>
+          Si queres saber más del festival entra a este 
+          <a href="#">Link</a>
+        </p>
+        <small>Mauris sed sem vitae felis commodo tristique</small>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
+
+
+
+<!--CSS :P-->
+<style>
+    :root {
+  --overlay: rgba(240, 240, 240, 0.46);
+}
+
+body.dark-mode {
+  --overlay: rgba(0, 0, 0, 0.46);
+}
+
+/* ==== ESTILO GENERAL ==== */
+body {
+  margin: 0;
+  font-family: 'Rubik', sans-serif;
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  position: relative;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+.hero2 {
+  height: 40vh;
+  background: url(img/f1.png) center/cover no-repeat;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2),
+              0 6px 20px rgba(0,0,0,0.19);
+
+    }
+.contenido {
+  max-width: 800px;
+  margin: auto;
+  background: var(--overlay);
+  padding: 3rem;
+  border-radius: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+h2 {
+  color: var(--color-acento);
+  font-size: 2rem;
+}
+
+.boton {
+  background: transparent;
+  border: 2px solid var(--color-acento);
+  color: var(--color-acento);
+  padding: 1rem 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton:hover {
+  background: var(--color-acento);
+  color: var(--color-fondo);
+}
+
+</style>
+<script>
+  const toggle = document.getElementById('modo-toggle');
+  const body = document.body;
+
+  // Recordar preferencia
+  if (localStorage.getItem('modo') === 'noche') {
+    body.classList.add('dark-mode');
+  }
+
+  toggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
+  });
+</script>
