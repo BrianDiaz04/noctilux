@@ -517,7 +517,6 @@ ul{
     text-align: center;
     width: 80%;
   }
-
   .nav ul {
     display: flex;
     flex-direction: column;
@@ -530,24 +529,27 @@ ul{
   }
 
   #titulo1 {
-    font-size: 52px;
+    font-size: 20vw;
     letter-spacing: -2px;
     text-align: center;
-    padding: 0 1rem;
+    padding: 0 10rem;
+    margin-top: 90px;
   }
 
   .imgcartel {
     position: relative;
     margin: 1rem auto;
-    top: 0;
-    left: 0;
+    top: -6rem;
+    left: 3rem;
     transform: none;
     width: 130px;
     height: 130px;
   }
 
   .botoncito1 {
-    width: 85%;
+    position: relative;
+    top: -10rem;
+    width: 55%;
     font-size: 1rem;
     margin-bottom: 30%;
     text-align: center;
@@ -555,15 +557,16 @@ ul{
 
   /* ==== CONTADOR ==== */
   .contador {
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 15%;
     padding: 10px;
   }
-
-  .separador {
-    display: none;
+  .contenedor{
+    display: grid;
+    color: var(--color-texto);
+    text-align: center;
+    margin: 50px 15%;
   }
-
   .bloque span {
     font-size: 40px;
   }
@@ -571,21 +574,29 @@ ul{
   .bloque p {
     font-size: 13px;
   }
+  .contador .bloque:last-of-type {
+    display: none;
+  }
+  .contador .separador:nth-last-of-type(-n+2) {
+    display: none;
+  }
 
   /* ==== TARJETAS ==== */
   .tarjetas {
     grid-template-columns: 1fr;
     text-align: center;
-    margin: 30px 5%;
+    margin: 30px 15%;
+    border-radius: 2%;
   }
 
   .tarjetas img {
-    padding: 1rem;
-    order: -1; /* imagen arriba */
+    padding: 2rem;
+    order: 1; /* imagen arriba */
   }
 
   .texto {
     padding: 1rem;
+    text-align: left;
   }
 
   .texto .tituloa {
@@ -628,5 +639,4 @@ ul{
     opacity: 0.12;
     transform: scale(0.8);
   }
-
 }
