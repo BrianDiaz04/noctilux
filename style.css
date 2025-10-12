@@ -330,6 +330,7 @@ ul{
 .bloque p {
   font-size: 16px;
   font-weight: 700;
+  font-family: 'Rubik';
   text-transform: uppercase;
   margin-top: 8px;
 }
@@ -479,6 +480,7 @@ ul{
 }
 .h3timer {
   bottom: 0;
+  font-family: 'Rubik';
   margin: 0 auto;
 }
 .numeros {
@@ -657,3 +659,4 @@ ul{
   }
 
 }
+
