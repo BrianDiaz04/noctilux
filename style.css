@@ -524,9 +524,23 @@ ul{
   }
 
   /* ==== HERO ==== */
-  .hero {
-    height: 80vh;
-  }
+   .hero {
+  position: relative;
+  isolation: isolate; /* crea un contexto limpio */
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35); /* o el color que uses con multiply */
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+
+.textohero, #titulo1, .imgcartel {
+  position: relative;
+  z-index: 2;
+}
 
   #titulo1 {
     font-size: 20vw;
@@ -640,3 +654,4 @@ ul{
     transform: scale(0.8);
   }
 }
+
