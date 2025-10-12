@@ -88,7 +88,22 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
+@font-face {
+  font-family: 'Rubik';
+  src: url('./fonts/Rubik-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
+/* Bebas Neue Regular */
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url('./fonts/BebasNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 /* ==== HEADER ==== */
 .header {
   position: sticky;
@@ -218,8 +233,7 @@ ul{
 }
 
 .overlay {
-   height: 100%;
-  inset: 0;
+  height: 90vh;
   opacity: 0.7;
   width: 100%;
   background: var(--color-overlay);
@@ -525,22 +539,9 @@ ul{
   }
 
   /* ==== HERO ==== */
-   .hero {
-    overflow: hidden; /* lo mantiene dentro del hero */
-    height: 100svh; /* altura visible real en móviles */
+  .hero {
+    height: 80vh;
   }
-
-  .hero::before {
-    inset: 0;
-    height: 100%; /* asegura que cubra solo el hero */
-  }
-
-
-.textohero, #titulo1, .imgcartel {
-  position: relative;
-  z-index: 2;
-}
-
   #titulo1 {
     font-size: 20vw;
     letter-spacing: -2px;
@@ -653,6 +654,3 @@ ul{
     transform: scale(0.8);
   }
 }
-
-
-
