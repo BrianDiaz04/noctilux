@@ -18,14 +18,23 @@
       <div class="logo">
         <img src="img/Group 217.png" alt="lerolero">
        </div>
-      <nav class="nav">
-        <button class="burger">☰</button>
-        <button id="modo-toggle" class="burger2">🌓</button>
+       <button class="burger" id="abrir">☰</button>
+      <nav class="nav" id="nav">
         <ul>
           <li><a href="index.html">Inicio</a></li>
           <li><a href="entrada.html">Entradas</a></li>
           <li><a href="festival.html">Sobre nosotros</a></li>
         </ul>
+        <div class="seccioncard">
+          <h3>Modo diurno</h3>          
+          
+          <div class="boton">
+          <input type="checkbox" id="btn-switch">
+          <label for="btn-switch" class="lbl-switch"></label>
+
+        </div>
+        </div>
+        
       </nav>
     </div>
   </header>
@@ -133,16 +142,45 @@
 </body>
  </html>
 <script>
-  const toggle = document.getElementById('modo-toggle');
-  const body = document.body;
+// ===== MENU HAMBURGUESA =====
+const nav = document.querySelector("#nav");
+const abrir = document.querySelector("#abrir");
 
-  // Recordar preferencia
-  if (localStorage.getItem('modo') === 'noche') {
-    body.classList.add('dark-mode');
+abrir.addEventListener("click", () => {
+  nav.classList.toggle("visible"); // abre/cierra el menú
+});
+
+// ===== MODO OSCURO / SWITCH =====
+const switchBtn = document.getElementById('btn-switch');
+const body = document.body;
+const textoModo = document.querySelector('.seccioncard h3'); // el <h3> que dice "Modo diurno"
+
+// === función para actualizar el texto del título ===
+function actualizarTextoModo() {
+  if (body.classList.contains('dark-mode')) {
+    textoModo.textContent = "Modo diurno"; // cuando está en modo noche
+  } else {
+    textoModo.textContent = "Modo nocturno"; // cuando está en modo día
   }
+}
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
-  });
+// === restaurar modo guardado ===
+if (localStorage.getItem('modo') === 'noche') {
+  body.classList.add('dark-mode');
+  switchBtn.checked = true;
+  actualizarTextoModo();
+} else {
+  actualizarTextoModo();
+}
+
+// === alternar modo ===
+function alternarModo() {
+  body.classList.toggle('dark-mode');
+  localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
+  actualizarTextoModo();
+}
+
+// === listener del switch ===
+switchBtn.addEventListener('change', alternarModo);
+
 </script>
