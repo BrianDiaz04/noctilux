@@ -526,17 +526,15 @@ ul{
 
   /* ==== HERO ==== */
    .hero {
-  position: relative;
-  isolation: isolate; /* crea un contexto limpio */
-}
+    overflow: hidden; /* lo mantiene dentro del hero */
+    height: 100svh; /* altura visible real en móviles */
+  }
 
-.overlay {
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.35); /* o el color que uses con multiply */
-  mix-blend-mode: multiply;
-  z-index: 1;
-}
+  .hero::before {
+    inset: 0;
+    height: 100%; /* asegura que cubra solo el hero */
+  }
+
 
 .textohero, #titulo1, .imgcartel {
   position: relative;
@@ -655,5 +653,6 @@ ul{
     transform: scale(0.8);
   }
 }
+
 
 
