@@ -80,6 +80,7 @@
 }
 body {
   font-family: 'Rubik', sans-serif;
+  font-weight: 700;
   line-height: 1.5;
   background-color: var(--color-fondo);
   color: var(--color-texto);
@@ -664,6 +665,7 @@ ul{
   }
 
 }
+
 
 
 
