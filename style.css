@@ -333,8 +333,8 @@ ul{
 }
 .bloque p {
   font-size: 16px;
-  font-weight: 700;
   font-family: 'Rubik';
+  font-weight: 700;
   text-transform: uppercase;
   margin-top: 8px;
 }
@@ -663,5 +663,6 @@ ul{
   }
 
 }
+
 
 
