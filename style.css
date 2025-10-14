@@ -108,7 +108,10 @@ a {
   max-width: 1200px;
   margin: 0 auto;
 }
-
+p {
+  font-family: 'Rubik', sans-serif;
+  font-weight: 700;
+}
 
 /* ==== HEADER ==== */
 .header {
@@ -663,6 +666,7 @@ ul{
   }
 
 }
+
 
 
 
