@@ -114,18 +114,7 @@ body {
 .p26 { top: 46%; left: 33%; width: clamp(110px, 10vw, 210px); transform: rotate(-8deg); }
 .p27 { top: 80%; left: 55%; width: clamp(90px, 10vw, 120px); transform: rotate(-8deg); }
 
-.boton {
-  position: relative;
-  background: transparent;
-  border: 2px solid var(--color-acento);
-  color: var(--color-acento);
-  padding: 1rem 10rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  margin: 2rem auto;
-}
+
 
 .overlay3 {
   height: 40vh;
@@ -139,7 +128,7 @@ body {
   transition: background 0.4s;
   z-index: 2;
 }
-.boton {
+#boton {
   position: relative;
   width: 50%;         
   display: flex;               
@@ -147,8 +136,6 @@ body {
   align-items: center;           
   padding: 1rem;                  
   background: transparent;
-  border: 2px solid var(--color-acento);
-  color: var(--color-acento);
   cursor: pointer;
   transition: all 0.3s ease;
   margin: 2rem auto;              
@@ -159,9 +146,10 @@ body {
 p, h1, h3{
     text-transform: uppercase;
 }
-h3{
+#rosa{
     color: var(--resaltar);
 }
+
 </style>
 </head>
 <body class="modo-noche"> <!-- cambiar a modo-dia para ver el otro tema -->
@@ -171,18 +159,28 @@ h3{
       <div class="logo">
         <img src="img/Group 217.png" alt="lerolero">
        </div>
-      <nav class="nav">
-        <button class="burger">☰</button>
-        <button id="modo-toggle" class="burger2">🌓</button>
+       <button class="burger" id="abrir">☰</button>
+      <nav class="nav" id="nav">
+        <div class="nav-inner">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="entrada.html">Entradas</a></li>
           <li><a href="festival.html">Sobre nosotros</a></li>
         </ul>
+        <div class="seccioncard">
+          <h3>Modo diurno</h3>          
+          
+          <div class="boton">
+          <input type="checkbox" id="btn-switch">
+          <label for="btn-switch" class="lbl-switch"></label>
+
+        </div>
+        </div>
+        </div>
+        
       </nav>
     </div>
   </header>
-
 
   <section class="hero2">
     <div id="entradah" class="img5"></div>
@@ -194,12 +192,12 @@ h3{
 
   <section class="contenido2">
     <h1>preparate para micelAR EN LOS <br> UMBRALES</h1>
-    <h3>La compra fue un éxito: tu entrada está lista, en las próximas será acreditada en tu pulsera de identificación</h3>
+    <h3 id="rosa">La compra fue un éxito: tu entrada está lista, en las próximas será acreditada en tu pulsera de identificación</h3>
     <p>A partir de ahora, empezás a umbrear — dejarte llevar por la mezcla de luces, aromas y sonidos que conectan los mundos. <br>
 Entre cuerpos que esporean en espuma luminosa y miradas que lumean bajo la pintura y los tragos, el tiempo se diluye.<br> Podrás solear con los primeros rayos que despiertan la tierra y lunear cuando la noche abra su pulso secreto.<br>
 Todo se entreteje: personas, gestos, respiraciones.<br> Cada paso es una red, cada encuentro una chispa.<br>
 Nos vemos pronto, en el cruce donde empieza la celebración.<br> Bienvenido a  los Umbrales.</p>
-    <a href="index.html" class="boton">Volver a la pagina principal</a>
+    <a href="index.html" class="botoncito" id="boton">Volver a la pagina principal</a>
   </section>
 
   <div class="decoracion2" aria-hidden="true">
@@ -212,17 +210,17 @@ Nos vemos pronto, en el cruce donde empieza la celebración.<br> Bienvenido a  l
     <img src="img/hom2.png" alt="" class="png p27">
   </div>
 
-  <footer class="footer">
+ <footer class="footer">
     <div class="container footer-grid">
       <div class="social">
         <img src="img/Group 217.png" alt="lerolero">
       </div>
       <div class="more-info">
-        <p>
-          Si queres saber más del festival entra a este 
-          <a href="#">Link</a>
-        </p>
-        <small>Mauris sed sem vitae felis commodo tristique</small>
+        <ul>
+          <li>@Festival.umbrales</li>
+          <li>@Capresse.ex3</li>
+          <li>@noctilux.tdm3</li>
+        </ul>
       </div>
     </div>
   </footer>
@@ -231,16 +229,53 @@ Nos vemos pronto, en el cruce donde empieza la celebración.<br> Bienvenido a  l
 
 
 <script>
-  const toggle = document.getElementById('modo-toggle');
-  const body = document.body;
+// ===== MENU HAMBURGUESA =====
+const nav = document.querySelector("#nav");
+const abrir = document.querySelector("#abrir");
 
-  // Recordar preferencia
-  if (localStorage.getItem('modo') === 'noche') {
-    body.classList.add('dark-mode');
+abrir.addEventListener("click", () => {
+  nav.classList.toggle("visible"); // abre/cierra el menú
+});
+document.addEventListener("click", (e) => {
+  const clicDentroDelMenu = nav.contains(e.target);
+  const clicEnBoton = abrir.contains(e.target);
+
+  if (!clicDentroDelMenu && !clicEnBoton) {
+    nav.classList.remove("visible");
   }
+});
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
-  });
+// ===== MODO OSCURO / SWITCH =====
+const switchBtn = document.getElementById('btn-switch');
+const body = document.body;
+const textoModo = document.querySelector('.seccioncard h3'); // el <h3> que dice "Modo diurno"
+
+// === función para actualizar el texto del título ===
+function actualizarTextoModo() {
+  if (body.classList.contains('dark-mode')) {
+    textoModo.textContent = "Modo diurno"; // cuando está en modo noche
+  } else {
+    textoModo.textContent = "Modo nocturno"; // cuando está en modo día
+  }
+}
+
+// === restaurar modo guardado ===
+if (localStorage.getItem('modo') === 'noche') {
+  body.classList.add('dark-mode');
+  switchBtn.checked = true;
+  actualizarTextoModo();
+} else {
+  actualizarTextoModo();
+}
+
+// === alternar modo ===
+function alternarModo() {
+  body.classList.toggle('dark-mode');
+  localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
+  actualizarTextoModo();
+}
+
+// === listener del switch ===
+switchBtn.addEventListener('change', alternarModo);
+
 </script>

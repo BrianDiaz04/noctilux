@@ -8,7 +8,6 @@
     <meta name="languaje" content="es">
     <meta name="viewport" content="width=device-width,initial-scale1"/>
     <link rel="stylesheet" href="./style.css">
-    <script src="contador.js"></script>
 
     <style>
 /* ==============================
@@ -51,8 +50,11 @@ img {
 }
 
 .textohero {
+  position: relative;
   z-index: 3;
   margin-left: -150%;
+  top: 30%;
+  right: 20%;
 }
 
 /* ==============================
@@ -74,7 +76,9 @@ img {
 }
 
 .entradaa { background-image: url(img/f1.png); }
-.entradab { background-image: url(img/f2d.png); }
+.entradab {
+  background-image: var(--fotoumbral);
+}
 .entradac { background-image: url(img/f3.png); }
 
 .entradaa::before,
@@ -110,6 +114,7 @@ img {
   margin-top: 55px;
   gap: 0.7rem;
   justify-content: center;
+  padding-bottom: 20%;
 }
 
 .entradainfo.show {
@@ -129,6 +134,14 @@ img {
   position: relative;
   overflow: hidden;
   border-radius: 2%;
+  backdrop-filter: blur(10.5px);
+  transition: background 0.4s;
+  transition: background-color 0.4s;
+  transition: transform 0.5s ease;
+}
+.entrada1:hover{
+  transition: transform 0.3s ease;
+  transform: scale(1.05); 
 }
 ul{
   position: relative;
@@ -255,7 +268,12 @@ ul{
   transform-origin: center;
   transition: opacity 0.3s ease, transform 0.5s ease;
 }
-
+#titulos{
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  font-size: 50px;
+}
 
 .p21 { top: 60%; right: 5%; width: clamp(80px, 10vw, 100px); transform: rotate(10deg); }
 .p22 { top: 25%; left: 10%; width: clamp(100px, 12vw, 220px); transform: rotate(-12deg); }
@@ -283,19 +301,30 @@ ul{
  </head>
 
 <body>
-  <header class="header">
+ <header class="header">
     <div class="container">
       <div class="logo">
         <img src="img/Group 217.png" alt="lerolero">
        </div>
-      <nav class="nav">
-        <button class="burger">☰</button>
-        <button id="modo-toggle" class="burger2">🌓</button>
+       <button class="burger" id="abrir">☰</button>
+      <nav class="nav" id="nav">
+        <div class="nav-inner">
         <ul>
-          <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="entrada.html">Entradas</a></li>
-          <li><a href="entrada.html">Sobre nosotros</a></li>
+          <li><a href="festival.html">Sobre nosotros</a></li>
         </ul>
+        <div class="seccioncard">
+          <h3>Modo diurno</h3>          
+          
+          <div class="boton">
+          <input type="checkbox" id="btn-switch">
+          <label for="btn-switch" class="lbl-switch"></label>
+
+        </div>
+        </div>
+        </div>
+        
       </nav>
     </div>
   </header>
@@ -314,7 +343,7 @@ ul{
     <div class="entrada1">
       <div class="ov"></div>
       <div class="entradaa">
-      <h1>General</h1>
+     
       </div>
       <h3>VIVí EL FESTIVAL EN TODA SU ESENCIA.</h3>
       <ul>
@@ -322,12 +351,13 @@ ul{
       <li>Shows, actividades y recorridos sensoriales.</li>
       <li>Zona gastronómica y barra general.</li>
       </ul>
+       <h1 id="titulos">General</h1>
       <a class="botoncito" href="entrada1.html">Consegui tu entrada</a>
     </div>
     <div class="entrada1">
       <div class="ov"></div>
       <div class="entradab">
-      <h1 id="tituloss">Umbral</h1>
+      
       </div>
       <h3>VIVÍ EL FESTIVAL CON TODA LA EXPERIENCIA.</h3>
       <ul>
@@ -336,12 +366,13 @@ ul{
       <li>UN TRAGO TEMATICO DE CORTESIA (EJ: SOLAR FIZZ/LUNAR GLOW).</li>
       <li>PULSERA LUMINOSA OFICIAL.</li>
       </ul>
+      <h1 id="titulos">Umbral</h1>
       <a class="botoncito" href="#">Consegui tu entrada</a>
     </div>
     <div class="entrada1">
       <div class="ov"></div>
       <div class="entradac">
-      <h1>Comunidad</h1>
+      
       </div>
       <h3>VIVÍ EL FESTIVAL DEJANDO TU HUELLA</h3>
       <ul>
@@ -350,6 +381,7 @@ ul{
       <li>ACCESO A ACTIVIDADES COLECTIVAS ESPECIALES.</li>
       <li>MERCH SIMBOLICO DE RECUERDO</li>   
       </ul>
+      <h1 id="titulos">Comunidad</h1>
       <a class="botoncito" href="#">Consegui tu entrada</a>
     </div>
   </section>
@@ -370,11 +402,11 @@ ul{
         <img src="img/Group 217.png" alt="lerolero">
       </div>
       <div class="more-info">
-        <p>
-          Si queres saber más del festival entra a este 
-          <a href="#">Link</a>
-        </p>
-        <small>Mauris sed sem vitae felis commodo tristique</small>
+        <ul>
+          <li>@Festival.umbrales</li>
+          <li>@Capresse.ex3</li>
+          <li>@noctilux.tdm3</li>
+        </ul>
       </div>
     </div>
   </footer>
@@ -408,16 +440,52 @@ ul{
 </body>
 </html>
 <script>
-  const toggle = document.getElementById('modo-toggle');
-  const body = document.body;
+// ===== MENU HAMBURGUESA =====
+const nav = document.querySelector("#nav");
+const abrir = document.querySelector("#abrir");
 
-  // Recordar preferencia
-  if (localStorage.getItem('modo') === 'noche') {
-    body.classList.add('dark-mode');
+abrir.addEventListener("click", () => {
+  nav.classList.toggle("visible"); // abre/cierra el menú
+});
+document.addEventListener("click", (e) => {
+  const clicDentroDelMenu = nav.contains(e.target);
+  const clicEnBoton = abrir.contains(e.target);
+
+  if (!clicDentroDelMenu && !clicEnBoton) {
+    nav.classList.remove("visible");
   }
+});
+// ===== MODO OSCURO / SWITCH =====
+const switchBtn = document.getElementById('btn-switch');
+const body = document.body;
+const textoModo = document.querySelector('.seccioncard h3'); // el <h3> que dice "Modo diurno"
 
-  toggle.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-    localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
-  });
+// === función para actualizar el texto del título ===
+function actualizarTextoModo() {
+  if (body.classList.contains('dark-mode')) {
+    textoModo.textContent = "Modo diurno"; // cuando está en modo noche
+  } else {
+    textoModo.textContent = "Modo nocturno"; // cuando está en modo día
+  }
+}
+
+// === restaurar modo guardado ===
+if (localStorage.getItem('modo') === 'noche') {
+  body.classList.add('dark-mode');
+  switchBtn.checked = true;
+  actualizarTextoModo();
+} else {
+  actualizarTextoModo();
+}
+
+// === alternar modo ===
+function alternarModo() {
+  body.classList.toggle('dark-mode');
+  localStorage.setItem('modo', body.classList.contains('dark-mode') ? 'noche' : 'dia');
+  actualizarTextoModo();
+}
+
+// === listener del switch ===
+switchBtn.addEventListener('change', alternarModo);
+
 </script>
