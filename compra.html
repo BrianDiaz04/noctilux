@@ -149,7 +149,57 @@ p, h1, h3{
 #rosa{
     color: var(--resaltar);
 }
+@media (max-width: 768px) {
+  .tarjeta {
+    grid-template-columns: 1fr; 
+    text-align: center;
+  }
 
+  .entradainfo {
+    grid-template-columns: 1fr;
+    margin: 0 5%;
+  }
+  .textohero {
+  position: relative;
+  z-index: 3;
+  margin-left: 0;
+  top: 20%;
+  left: 10%;
+}
+body{
+  width: 100%;
+   min-height: 100vh;
+}
+html, body {
+  overflow-x: hidden;
+}
+.hero2, .hero2::before, #entradasection.overlay3{
+  height: 20vh;
+}
+#titulo2{
+  font-size: 40px;
+  text-align: left;
+}
+h1{
+  font-size: 30px;
+  padding-bottom: 7%;
+}
+h3{
+  font-size: 22px;
+  padding-bottom: 8%;
+}
+p{
+  font-size: 14px;
+  padding-bottom: 10%;
+}
+#boton{
+   white-space: nowrap;  
+   width: 100%;
+}
+.decoracion2{
+  height: 100%;
+}
+}
 </style>
 </head>
 <body class="modo-noche"> <!-- cambiar a modo-dia para ver el otro tema -->

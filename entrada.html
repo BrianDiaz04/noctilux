@@ -147,6 +147,9 @@ ul{
   position: relative;
   left: 5%;
 }
+#entradaburguer{
+  left: 0%;
+}
 .entrada1 li{
   padding-bottom: 0.5rem;
 }
@@ -295,6 +298,24 @@ ul{
     grid-template-columns: 1fr;
     margin: 0 5%;
   }
+  .textohero {
+  position: relative;
+  z-index: 3;
+  margin-left: 0;
+  top: 0%;
+  right: 0%;
+}
+body{
+  width: 100%;
+}
+html, body {
+  overflow-x: hidden;
+}
+.hero2, .hero2::before, #entradasection.overlay{
+  height: 20vh;
+}
+
+
 }
 
     </style>
@@ -309,7 +330,7 @@ ul{
        <button class="burger" id="abrir">☰</button>
       <nav class="nav" id="nav">
         <div class="nav-inner">
-        <ul>
+        <ul id="entradaburguer">
           <li><a href="index.html">Home</a></li>
           <li><a href="entrada.html">Entradas</a></li>
           <li><a href="festival.html">Sobre nosotros</a></li>

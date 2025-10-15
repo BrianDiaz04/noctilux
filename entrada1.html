@@ -166,7 +166,7 @@ body {
 .decoracion2 {
   position: absolute;
   width: 100%;
-  height: 150vh; /* cubre 3 pantallas de alto */
+  height: 100%; /* cubre 3 pantallas de alto */
   inset: 0;
   pointer-events: none;
   z-index: -1;
@@ -201,7 +201,46 @@ body {
   font-weight: bold;              
   border-radius: 5px;             
 }
+@media (max-width: 768px) {
+  .tarjeta {
+    grid-template-columns: 1fr; 
+    text-align: center;
+  }
 
+  .entradainfo {
+    grid-template-columns: 1fr;
+    margin: 0 5%;
+  }
+  .textohero {
+  position: relative;
+  z-index: 3;
+  margin-left: 0;
+  top: 0%;
+  right: 0%;
+}
+body{
+  width: 100%;
+   min-height: 100vh;
+}
+html, body {
+  overflow-x: hidden;
+}
+.hero2, .hero2::before, #entradasection.overlay{
+  height: 20vh;
+}
+h1{
+  font-size: 20px;
+  padding-bottom: 7%;
+}
+p{
+  font-size: 14px;
+  padding-bottom: 10%;
+}
+#boton{
+   white-space: nowrap;  
+   width: 100%;
+}
+}
 </style>
 <script>
 // ===== MENU HAMBURGUESA =====
