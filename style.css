@@ -773,9 +773,14 @@ ul{
 
   /* ==== CONTADOR ==== */
   .contador {
-    flex-direction: row;
-    gap: 15%;
-    padding: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;                  /* espacio entre bloques */
+    padding: 1rem;
+    width: 100%;
+    overflow-x: hidden;
   }
   .contenedor{
     display: grid;
@@ -789,6 +794,23 @@ ul{
 
   .bloque p {
     font-size: 13px;
+  }
+  
+
+  .bloque {
+    text-align: center;
+    flex: 1 1 auto;
+  }
+
+  .bloque span {
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
+    display: block;
+    white-space: nowrap;
+  }
+
+  .bloque p {
+    font-size: clamp(0.7rem, 3vw, 1rem);
+    margin-top: 0.3rem;
   }
   .contador .bloque:last-of-type {
     display: none;
